@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Конструктор промптов для учебных изображений: 30 форматов, любой язык, тема, лексика и грамматика.">
+<title>Кадр — конструктор промптов для преподавателя</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%232d46df'/%3E%3Cpath d='M10 17v-7h7m6 0h7v7m0 6v7h-7m-6 0h-7v-7' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css"><script src="formats.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<header class="header"><a href="./" class="brand" aria-label="Кадр — главная"><span class="brand-icon" aria-hidden="true">⌗</span>кадр<span class="brand-dot">.</span></a><span class="header-caption">Мастерская преподавателя</span><span class="badge">30 форматов · любая тема</span></header>
+<main>
+<div class="intro"><div><span class="eyebrow">ОТ ИДЕИ К ИЗОБРАЖЕНИЮ</span><h1>Картинка начинается<br>с хорошего промпта.</h1><p>Задайте учебный контекст. Выберите визуальную идею.<br class="desktop"> Заберите промпт в свой генератор изображений.</p></div><div class="intro-note"><span aria-hidden="true">✦</span><p>Вы придумываете урок.<br>Мы помогаем описать картинку.</p></div></div>
+<div class="workspace">
+<form id="builder" class="panel settings">
+<div class="section-heading"><span class="step">01</span><h2>Учебный контекст</h2></div>
+<div class="row"><label>Изучаемый язык<select id="language"><option>Английский</option><option>Немецкий</option><option>Французский</option><option>Испанский</option><option>Итальянский</option><option>Русский</option><option>Китайский</option><option>Японский</option><option>Корейский</option><option>Арабский</option><option>Турецкий</option><option>Португальский</option><option value="other">Другой язык</option></select></label><label>Уровень<select id="level"><option>Pre-A1</option><option selected>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label></div>
+<label id="custom-language-label" hidden>Название языка<input id="customLanguage" maxlength="80" placeholder="Например, финский"></label>
+<label>Возраст учеников<select id="age"><option>4–6 лет</option><option selected>7–9 лет</option><option>10–12 лет</option><option>13–17 лет</option><option>Взрослые</option></select></label>
+<label>Тема <span class="required">обязательно</span><input id="topic" required maxlength="300" value="Необычный пикник" placeholder="Например, путешествия, эмоции, город"></label>
+<label>Лексика<textarea id="vocabulary" rows="3" maxlength="2000" placeholder="Слова или выражения на изучаемом языке">basket, blanket, sandwich, under, next to</textarea><span class="hint">Можно оставить пустым. Слова станут деталями и действиями в картинке.</span></label>
+<label>Грамматика<textarea id="grammar" rows="2" maxlength="1500" placeholder="Например, Present Continuous, предлоги места">There is / There are; предлоги места</textarea><span class="hint">Задаёт ситуации для обсуждения, без правил и надписей на изображении.</span></label>
+<div class="row"><label>Стиль<select id="style"><option value="book">Книжная иллюстрация</option><option value="cartoon">Мультфильм</option><option value="watercolor">Акварель</option><option value="3d">Мягкая 3D-иллюстрация</option><option value="photo">Фотореализм</option><option value="line">Чёрно-белый рисунок</option></select></label><label>Пропорции<select id="ratio"><option value="4:3">4:3 · альбом</option><option value="1:1">1:1 · квадрат</option><option value="3:4">3:4 · портрет</option><option value="16:9">16:9 · экран</option></select></label></div>
+</form>
+<div class="right-column">
+<section class="panel formats-panel" aria-labelledby="format-heading"><div class="section-heading"><span class="step">02</span><h2 id="format-heading">Визуальный формат</h2><span class="count">30 идей</span></div><label class="sr-only" for="format">Выберите один из 30 форматов</label><select id="format" class="format-select"></select><div class="format-description"><span id="formatGroup" class="eyebrow"></span><p id="formatDescription"></p></div><details id="catalog"><summary>Посмотреть все 30 форматов<span aria-hidden="true">＋</span></summary><div id="formatGallery" class="gallery"></div></details></section>
+<section class="panel result-panel" aria-labelledby="result-heading"><div class="section-heading"><span class="step dark">03</span><h2 id="result-heading">Ваш промпт</h2><span class="live-label">Обновляется при вводе</span></div><p class="result-hint">Скопируйте и вставьте в ChatGPT или другой генератор изображений.</p><label class="sr-only" for="prompt">Готовый промпт</label><textarea id="prompt" readonly spellcheck="false"></textarea><div class="result-bottom"><span id="charCount"></span><button id="copy" type="button">Копировать промпт <span aria-hidden="true">⧉</span></button></div><p id="status" role="status" aria-live="polite"></p></section>
+<div class="footnote"><span aria-hidden="true">✳</span><p>В результате — только изображение. Как использовать его на занятии, решаете вы. Точность деталей зависит от выбранного генератора.</p></div>
+</div>
+</div>
+</main><footer><span>кадр. <span class="footer-muted">Пространство для ваших идей</span></span><span>Без регистрации · работает в браузере</span></footer>
+<noscript>Для работы конструктора включите JavaScript в браузере.</noscript>
+</body></html>
